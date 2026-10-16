@@ -1,6 +1,8 @@
 #  自用 客户背景管理系统
 
 面向  一级代理商销售人员的 Windows 桌面端客户背景管理软件。
+<img width="2534" height="1585" alt="image" src="https://github.com/user-attachments/assets/5ae51486-d842-4299-a697-551003613eab" />
+
 
 ## 当前阶段
 
