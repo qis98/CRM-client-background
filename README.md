@@ -1,6 +1,6 @@
-# FOREXCELTECH 客户背景管理系统
+#  自用 客户背景管理系统
 
-面向 FOREXCELTECH 一级代理商销售人员的 Windows 桌面端客户背景管理软件。
+面向  一级代理商销售人员的 Windows 桌面端客户背景管理软件。
 
 ## 当前阶段
 
@@ -57,7 +57,7 @@ pwsh.exe -NoProfile -Command "$env:PATH = 'D:\DevTools\NodeJS;D:\DevTools\SQLite
 打包依赖 `electron-builder`。打包输出目录固定为：
 
 ```text
-D:\FOREXCELTECHClientManager\release
+D:\ClientManager\release
 ```
 
 打包缓存目录固定为：
@@ -75,14 +75,14 @@ pwsh.exe -NoProfile -Command "$env:PATH = 'D:\DevTools\NodeJS;D:\DevTools\SQLite
 生成后的主要文件：
 
 ```text
-D:\FOREXCELTECHClientManager\release\FOREXCELTECHClientManager-Setup-0.1.0-x64.exe
-D:\FOREXCELTECHClientManager\release\FOREXCELTECHClientManager-Portable-0.1.0-x64.exe
+D:\ClientManager\release\ClientManager-Setup-0.1.0-x64.exe
+D:\ClientManager\release\ClientManager-Portable-0.1.0-x64.exe
 ```
 
 安装包支持自定义安装目录。按项目约定，安装时建议选择：
 
 ```text
-D:\FOREXCELTECHClientManager\app
+D:\ClientManager\app
 ```
 
 只生成解包目录用于快速验证：
@@ -100,24 +100,24 @@ resources\sqlite\sqlite3.exe
 应用启动后会自动创建：
 
 ```text
-D:\FOREXCELTECHClientManager\data.db
-D:\FOREXCELTECHClientManager\attachments
-D:\FOREXCELTECHClientManager\backups
-D:\FOREXCELTECHClientManager\exports
-D:\FOREXCELTECHClientManager\logs
-D:\FOREXCELTECHClientManager\temp
+D:\ClientManager\data.db
+D:\ClientManager\attachments
+D:\ClientManager\backups
+D:\ClientManager\exports
+D:\ClientManager\logs
+D:\ClientManager\temp
 ```
 
 Ollama 本地模型目录：
 
 ```text
-D:\FOREXCELTECHClientManager\ollama-models
+D:\ClientManager\ollama-models
 ```
 
 Ollama 用户目录：
 
 ```text
-D:\FOREXCELTECHClientManager\ollama-home
+D:\ClientManager\ollama-home
 ```
 
 `C:\Users\songmu\.ollama` 是指向上述 D 盘目录的 junction，不保存实际模型文件。
@@ -125,19 +125,19 @@ D:\FOREXCELTECHClientManager\ollama-home
 项目运行数据默认根目录：
 
 ```text
-D:\FOREXCELTECHClientManager
+D:\ClientManager
 ```
 
 可通过环境变量覆盖：
 
 ```text
-FOREXCELTECH_DATA_DIR
+_DATA_DIR
 ```
 
 智能录入当前 MVP 聚焦文字稿结构化抽取。Ollama 本地模型配置在软件“设置”页中维护，配置文件保存到：
 
 ```text
-D:\FOREXCELTECHClientManager\config.json
+D:\ClientManager\config.json
 ```
 
 设置页支持：
@@ -150,7 +150,7 @@ D:\FOREXCELTECHClientManager\config.json
 本地模型测试前请确认 Ollama 服务已启动，并已安装模型：
 
 ```powershell
-pwsh.exe -NoProfile -Command "$env:PATH = 'D:\DevTools\Ollama;' + $env:PATH; $env:OLLAMA_MODELS = 'D:\FOREXCELTECHClientManager\ollama-models'; & 'D:\DevTools\Ollama\ollama.exe' list"
+pwsh.exe -NoProfile -Command "$env:PATH = 'D:\DevTools\Ollama;' + $env:PATH; $env:OLLAMA_MODELS = 'D:\ClientManager\ollama-models'; & 'D:\DevTools\Ollama\ollama.exe' list"
 ```
 
 当前开发环境已安装并验证：
@@ -163,7 +163,7 @@ qwen3:8b
 如服务未启动，可执行：
 
 ```powershell
-pwsh.exe -NoProfile -Command "$env:PATH = 'D:\DevTools\Ollama;' + $env:PATH; $env:OLLAMA_MODELS = 'D:\FOREXCELTECHClientManager\ollama-models'; Start-Process -FilePath 'D:\DevTools\Ollama\ollama.exe' -ArgumentList 'serve' -WorkingDirectory 'D:\DevTools\Ollama' -WindowStyle Hidden"
+pwsh.exe -NoProfile -Command "$env:PATH = 'D:\DevTools\Ollama;' + $env:PATH; $env:OLLAMA_MODELS = 'D:\ClientManager\ollama-models'; Start-Process -FilePath 'D:\DevTools\Ollama\ollama.exe' -ArgumentList 'serve' -WorkingDirectory 'D:\DevTools\Ollama' -WindowStyle Hidden"
 ```
 
 当前 MVP 暂不处理录音转写。请先用其他工具把录音转成文字，再粘贴到“智能录入”。
@@ -174,8 +174,8 @@ pwsh.exe -NoProfile -Command "$env:PATH = 'D:\DevTools\Ollama;' + $env:PATH; $en
 
 应用顶部提供“备份”和“导出”按钮。
 
-- 备份会复制当前 SQLite 数据库到 `D:\FOREXCELTECHClientManager\backups`。
-- 导出会在 `D:\FOREXCELTECHClientManager\exports` 下生成客户、联系人、拜访记录 CSV 文件。
+- 备份会复制当前 SQLite 数据库到 `D:\ClientManager\backups`。
+- 导出会在 `D:\ClientManager\exports` 下生成客户、联系人、拜访记录 CSV 文件。
 - 应用启动时会执行 SQLite `integrity_check`，用于尽早发现数据库损坏。
 
 ## 试用测试
@@ -197,7 +197,7 @@ docs\help.md
 默认优先使用环境变量：
 
 ```text
-FOREXCELTECH_SQLITE_BIN
+_SQLITE_BIN
 ```
 
 如果未配置，则尝试使用：
